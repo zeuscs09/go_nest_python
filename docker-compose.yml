@@ -64,6 +64,18 @@ services:
     networks:
       - app-network
 
+  dotnet-api:
+    build: ./dotnet-api
+    container_name: dotnet_api
+    ports:
+      - "5001:5000"
+    depends_on:
+      - postgres
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=performance_test;Username=postgres;Password=password"
+    networks:
+      - app-network
+
 volumes:
   postgres_data:
 

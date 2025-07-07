@@ -60,7 +60,7 @@ export class AnalyticsService {
   }
 
   async getComplexAnalytics() {
-    return this.productRepository.createQueryBuilder('p')
+    const analytics = await this.productRepository.createQueryBuilder('p')
       .leftJoin('p.orderItems', 'oi')
       .leftJoin('oi.order', 'o')
       .leftJoin('o.user', 'u')
@@ -75,5 +75,10 @@ export class AnalyticsService {
       .groupBy('p.category')
       .orderBy('total_revenue', 'DESC')
       .getRawMany();
+
+    return {
+      data: analytics,
+      timestamp: new Date().toISOString(),
+    };
   }
 } 

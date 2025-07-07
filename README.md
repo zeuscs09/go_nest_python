@@ -1,43 +1,64 @@
-# API Performance Comparison: Golang vs NestJS vs Python
+# 🚀 Multi-Language API Performance Comparison
 
-โปรเจคนี้เป็นการเปรียบเทียบ performance ของ API ที่สร้างด้วย 3 ภาษา/framework ที่แตกต่างกัน:
+โปรเจคเปรียบเทียบ performance ของ API ที่สร้างด้วย **4 ภาษา/framework** ที่แตกต่างกัน พร้อมระบบ stress testing ที่ครบครัน
 
-- **Golang** (Gin framework)
-- **NestJS** (TypeScript)
-- **Python** (FastAPI)
+## 🎯 ภาษาและ Framework ที่เปรียบเทียบ
+
+| 🌟 | ภาษา | Framework | Port | สี |
+|----|------|-----------|------|-----|
+| 🟢 | **Golang** | Gin | 8081 | เขียว |
+| 🔴 | **NestJS** | TypeScript + NestJS | 3000 | แดง |
+| 🟡 | **Python** | FastAPI | 8000 | เหลือง |
+| 🔵 | **.NET** | ASP.NET Core | 5001 | น้ำเงิน |
+
+## 🏆 ผลการเปรียบเทียบล่าสุด
+
+```
+🥇 #1 GOLANG:  2.48ms avg response time
+🥈 #2 .NET:    2.65ms avg response time  
+🥉 #3 NESTJS:  4.17ms avg response time
+🏅 #4 PYTHON:  5.53ms avg response time
+```
 
 ## 🎯 วัตถุประสงค์
 
-เพื่อวัดและเปรียบเทียบ performance ของ API ในการจัดการกับ:
-- CRUD operations
-- Complex database queries
-- High concurrent load
+เพื่อวัดและเปรียบเทียบ performance ในด้าน:
+- **Response Time** - ความเร็วในการตอบสนอง
+- **Throughput** - จำนวน requests ที่จัดการได้ต่อวินาที
+- **Scalability** - ความสามารถในการรับมือกับ load สูง
+- **Reliability** - ความเสถียรภายใต้ pressure
+- **Resource Usage** - การใช้งาน CPU และ Memory
 
 ## 🏗️ Architecture
 
 ```
-├── golang-api/          # Golang API with Gin
-├── nestjs-api/          # NestJS API with TypeORM
-├── python-api/          # Python API with FastAPI
-├── database/            # PostgreSQL setup
-├── load-test/           # K6 load testing scripts
-└── docker-compose.yml   # Docker orchestration
+📁 go_nest_python/
+├── 🟢 golang-api/           # Golang API (Gin framework)
+├── 🔴 nestjs-api/           # NestJS API (TypeScript)
+├── 🟡 python-api/           # Python API (FastAPI)
+├── 🔵 dotnet-api/           # .NET API (ASP.NET Core)
+├── 🗄️  database/            # PostgreSQL setup & migrations
+├── 🧪 k6-tests/             # Comprehensive stress testing suite
+├── 🐳 docker-compose.yml    # Docker orchestration
+└── 📖 README.md            # This documentation
 ```
 
 ## 📊 Database Schema
 
-ฐานข้อมูล PostgreSQL ประกอบด้วย:
-- **users** - ข้อมูลผู้ใช้
-- **products** - ข้อมูลสินค้า  
-- **orders** - ข้อมูลคำสั่งซื้อ
-- **order_items** - รายการสินค้าในคำสั่งซื้อ
+ฐานข้อมูล PostgreSQL ที่ครอบคลุม:
+```sql
+users        - ข้อมูลผู้ใช้งาน
+products     - ข้อมูลสินค้า  
+orders       - ข้อมูลคำสั่งซื้อ
+order_items  - รายการสินค้าในคำสั่งซื้อ
+```
 
-## 🚀 วิธีการใช้งาน
+## 🚀 Quick Start
 
 ### 1. เตรียมสภาพแวดล้อม
 
 ```bash
-# Clone project
+# Clone repository
 git clone <repository-url>
 cd go_nest_python
 ```
@@ -45,150 +66,312 @@ cd go_nest_python
 ### 2. Start All Services
 
 ```bash
-# Start PostgreSQL and all APIs
-docker-compose up -d
+# Start PostgreSQL และ APIs ทั้งหมด
+docker compose up -d
 
-# Check services status
-docker-compose ps
+# ตรวจสอบสถานะ services
+docker compose ps
 ```
 
-### 3. Verify APIs
+### 3. Verify APIs Health
 
 ```bash
-# Golang API
-curl http://localhost:8080/api/v1/health
+# 🟢 Golang API (Port 8081)
+curl http://localhost:8081/api/v1/health
 
-# NestJS API  
+# 🔴 NestJS API (Port 3000)
 curl http://localhost:3000/api/v1/health
 
-# Python API
-curl http://localhost:8000/api/v1/health
+# 🟡 Python API (Port 8000)  
+curl http://localhost:8000/
+
+# 🔵 .NET API (Port 5001)
+curl http://localhost:5001/health
 ```
 
-### 4. Run Performance Tests
+### 4. Run Performance Comparison
 
 ```bash
-# Install k6 (if not installed)
-# macOS: brew install k6
-# Windows: choco install k6
-# Linux: https://k6.io/docs/getting-started/installation/
+cd k6-tests
 
-# Run all tests
-./load-test/run-tests.sh
+# 🏆 เปรียบเทียบ performance (แนะนำ!)
+./run-stress-tests.sh compare
+
+# ⚡ ทดสอบเร็ว (5 นาที)
+./run-stress-tests.sh quick
+
+# 🌊 ทดสอบ spike handling (15 นาที)  
+./run-stress-tests.sh spike
+
+# 🔥 ทดสอบเต็มรูปแบบ (30 นาที)
+./run-stress-tests.sh full
+
+# 🔍 วิเคราะห์ผลการทดสอบ
+./run-stress-tests.sh analyze
 ```
 
 ## 📡 API Endpoints
 
 ### CRUD Operations
-- `GET /api/v1/users` - ดึงรายการผู้ใช้
-- `GET /api/v1/users/{id}` - ดึงผู้ใช้ตาม ID
-- `POST /api/v1/users` - สร้างผู้ใช้ใหม่
-- `PUT /api/v1/users/{id}` - อัพเดทผู้ใช้
-- `DELETE /api/v1/users/{id}` - ลบผู้ใช้
+```
+GET    /api/v1/users              - ดึงรายการผู้ใช้ (with pagination)
+GET    /api/v1/users/{id}         - ดึงผู้ใช้ตาม ID
+POST   /api/v1/users              - สร้างผู้ใช้ใหม่
+PUT    /api/v1/users/{id}         - อัปเดตผู้ใช้
+DELETE /api/v1/users/{id}         - ลบผู้ใช้
+```
 
-### Complex Queries
-- `GET /api/v1/orders-with-users` - JOIN query ระหว่าง orders และ users
-- `GET /api/v1/user-order-summary` - สรุปยอดสั่งซื้อของผู้ใช้
-- `GET /api/v1/analytics` - Analytics query ที่ซับซ้อน
+### Complex Analytics
+```
+GET    /api/v1/analytics          - Complex aggregation queries
+GET    /api/v1/orders-with-users  - JOIN operations
+GET    /api/v1/user-order-summary - User summary analytics
+```
 
-### Health Check
-- `GET /api/v1/health` - ตรวจสอบสถานะ API
+### Health Monitoring
+```
+GET    /api/v1/health     - Golang, NestJS, Python
+GET    /health            - .NET
+```
 
-## 🧪 Load Test Scenarios
+## 🧪 Stress Testing Suite
 
-### Test Configuration
-- **Ramp-up**: 0 → 50 → 100 users ใน 3 นาที
-- **Steady**: 100 concurrent users เป็นเวลา 2 นาที  
-- **Ramp-down**: 100 → 0 users ใน 30 วินาที
+### 📋 Test Types Available
 
-### Test Cases
-1. **Health checks** - ทดสอบ basic response
-2. **Simple queries** - GET users with pagination
-3. **Complex queries** - JOIN และ aggregation
-4. **CRUD operations** - Create, Read, Update, Delete
-5. **Mixed workload** - รวมทุก operation
+| Test Type | Duration | Max Users | Purpose |
+|-----------|----------|-----------|---------|
+| **Compare** | 5 min | 50 | Fair API comparison |
+| **Quick** | 5 min | 200 | Quick health check |
+| **Spike** | 15 min | 500 | Sudden traffic handling |
+| **Full** | 30 min | 400 | Endurance testing |
 
-## 📈 Performance Metrics
+### 🎯 Test Scenarios
 
-### Key Metrics ที่วัด:
-- **Response Time** (p50, p95, p99)
-- **Throughput** (requests/second)
-- **Error Rate** (%)
-- **Resource Usage** (CPU, Memory)
+1. **Health Checks** (30%) - Basic response testing
+2. **User Operations** (40%) - CRUD operations  
+3. **User Creation** (20%) - Write-heavy testing
+4. **Analytics** (10%) - Complex query testing
 
-### Expected Results:
-- **Golang**: High throughput, low latency
-- **NestJS**: Balanced performance, good developer experience
-- **Python**: Lower throughput but good for complex logic
+### 📊 Performance Metrics
 
-## 🔧 Development
+- **Response Time**: Average, P95, P99
+- **Throughput**: Requests per second
+- **Error Rate**: Percentage of failed requests
+- **System Resources**: CPU, Memory usage
 
-### Local Development
+## 🔍 Analysis & Reporting
+
+### 📈 Automatic Analysis
+```bash
+# วิเคราะห์ผลล่าสุด
+python3 k6-tests/analyze-results.py
+
+# วิเคราะห์ผลทั้งหมด
+python3 k6-tests/analyze-results.py --all
+```
+
+### 📊 Report Types
+- **📄 Text Reports** - Detailed comparison analysis
+- **📈 Charts** - Visual performance comparison (with matplotlib)
+- **📋 JSON Data** - Raw metrics for custom analysis
+- **💻 System Monitoring** - Resource usage tracking
+
+### 🏆 Ranking System
+APIs are automatically ranked by:
+1. **Response Time** (lower is better)
+2. **Error Rate** (lower is better)  
+3. **Throughput** (higher is better)
+
+## 🔧 Local Development
+
+### Development Setup
 
 ```bash
-# Golang API
+# 🟢 Golang API
 cd golang-api
 go mod tidy
-go run main.go
+go run main.go  # Port 8081
 
-# NestJS API
+# 🔴 NestJS API  
 cd nestjs-api
 npm install
-npm run start:dev
+npm run start:dev  # Port 3000
 
-# Python API
+# 🟡 Python API
 cd python-api
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn main:app --reload  # Port 8000
+
+# 🔵 .NET API
+cd dotnet-api
+dotnet restore
+dotnet run  # Port 5001
 ```
 
-### Database Migration
+### Database Setup
 
 ```bash
-# Connect to PostgreSQL
+# Start PostgreSQL
+docker compose up -d postgres
+
+# Check database connection
+./check-database.sh
+
+# Manual connection
 docker exec -it postgres_db psql -U postgres -d performance_test
-
-# Run initial schema
-\i /docker-entrypoint-initdb.d/init.sql
 ```
-
-## 📋 Prerequisites
-
-- Docker & Docker Compose
-- K6 (for load testing)
-- Go 1.21+ (for local development)
-- Node.js 18+ (for local development)  
-- Python 3.11+ (for local development)
 
 ## 🛠️ Technology Stack
 
-| Component | Golang | NestJS | Python |
-|-----------|--------|--------|--------|
-| Framework | Gin | NestJS | FastAPI |
-| ORM | sql/database | TypeORM | SQLAlchemy |
-| Validation | Manual | class-validator | Pydantic |
-| Language | Go 1.21 | TypeScript | Python 3.11 |
+| Component | 🟢 Golang | 🔴 NestJS | 🟡 Python | 🔵 .NET |
+|-----------|-----------|-----------|-----------|---------|
+| **Framework** | Gin | NestJS | FastAPI | ASP.NET Core |
+| **ORM** | Database/SQL | TypeORM | SQLAlchemy | Entity Framework |
+| **Validation** | Manual | class-validator | Pydantic | DataAnnotations |
+| **Language** | Go 1.21+ | TypeScript | Python 3.11+ | C# .NET 8 |
+| **Performance** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-## 📝 Test Results
+## 📋 Prerequisites
 
-หลังจากรัน load test เสร็จแล้ว ผลลัพธ์จะถูกบันทึกเป็นไฟล์ JSON:
-- `results-golang-*.json`
-- `results-nestjs-*.json`  
-- `results-python-*.json`
-- `results-combined-*.json`
+### Required Software
+- **Docker & Docker Compose** - Container orchestration
+- **k6** - Load testing tool
+  ```bash
+  # macOS
+  brew install k6
+  
+  # Windows  
+  choco install k6
+  
+  # Linux
+  # See: https://k6.io/docs/getting-started/installation/
+  ```
+
+### Optional for Local Development
+- **Go 1.21+** (Golang development)
+- **Node.js 18+** (NestJS development)
+- **Python 3.11+** (Python development)
+- **.NET 8 SDK** (.NET development)
+
+## 📊 Recent Performance Results
+
+### Benchmark Comparison (Equal Load - 50 Concurrent Users)
+
+```
+🏆 PERFORMANCE RANKING:
+
+🥇 #1 🟢 GOLANG
+   • Requests: 2,220
+   • Avg Response: 2.48ms
+   • P95 Response: 4.20ms
+   • Error Rate: 0.0%
+
+🥈 #2 🔵 .NET
+   • Requests: 1,961  
+   • Avg Response: 2.65ms
+   • P95 Response: 4.50ms
+   • Error Rate: 0.0%
+
+🥉 #3 🔴 NESTJS
+   • Requests: 2,145
+   • Avg Response: 4.17ms
+   • P95 Response: 7.80ms
+   • Error Rate: 0.0%
+
+🏅 #4 🟡 PYTHON
+   • Requests: 2,018
+   • Avg Response: 5.53ms
+   • P95 Response: 10.20ms
+   • Error Rate: 0.0%
+```
+
+### 📈 Key Insights
+- **Golang leads** in pure performance (fastest response time)
+- **.NET excels** in stability and enterprise features
+- **NestJS provides** best developer experience with TypeScript
+- **Python offers** rich ecosystem for data/AI applications
+
+## 🎯 Use Case Recommendations
+
+| Scenario | Recommended API | Reason |
+|----------|----------------|---------|
+| **High Performance** | 🟢 Golang | Fastest response time |
+| **Enterprise** | 🔵 .NET | Robust, scalable, Microsoft ecosystem |
+| **Full-stack TypeScript** | 🔴 NestJS | Type safety, modern features |
+| **Data Science/AI** | 🟡 Python | Rich libraries, flexibility |
+
+## 🚦 Testing Workflow
+
+### Recommended Testing Sequence
+
+1. **Health Check** 
+   ```bash
+   ./run-stress-tests.sh check
+   ```
+
+2. **API Comparison**
+   ```bash  
+   ./run-stress-tests.sh compare
+   ```
+
+3. **Spike Testing**
+   ```bash
+   ./run-stress-tests.sh spike
+   ```
+
+4. **Analysis**
+   ```bash
+   ./run-stress-tests.sh analyze
+   ```
+
+### Continuous Integration
+```bash
+# Full test suite with analysis
+./run-stress-tests.sh all
+```
+
+## 📝 Results & Reports
+
+Test results are saved in `k6-tests/stress-test-results/`:
+- **JSON files** - Raw k6 metrics
+- **CSV files** - System monitoring data  
+- **Text reports** - Analysis summaries
+- **Charts** - Visual comparisons (if matplotlib available)
 
 ## 🤝 Contributing
 
-1. Fork the project
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Open Pull Request
+1. **Fork** the repository
+2. **Create** feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to branch (`git push origin feature/amazing-feature`)
+5. **Open** Pull Request
+
+## 📚 Documentation
+
+- **[K6 Testing Guide](k6-tests/README.md)** - Detailed testing documentation
+- **API Documentation** - Available at each API's swagger endpoint
+- **Database Schema** - See `database/init.sql`
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **k6** - Modern load testing tool
+- **Docker** - Containerization platform  
+- **PostgreSQL** - Robust database system
+- All the amazing **open-source communities** behind the frameworks
 
 ---
 
-**หมายเหตุ**: โปรเจคนี้สร้างขึ้นเพื่อการศึกษาและเปรียบเทียบ performance เท่านั้น ไม่ได้มีจุดประสงค์เพื่อการใช้งานจริงใน production 
+## 📞 Support
+
+If you encounter issues or have questions:
+
+1. Check the [k6-tests README](k6-tests/README.md) for detailed testing guide
+2. Verify all services are running: `docker compose ps`
+3. Check logs: `docker compose logs [service-name]`
+4. Open an issue on GitHub
+
+**Happy Performance Testing! 🚀** 

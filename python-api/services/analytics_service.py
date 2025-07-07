@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from typing import List
+from datetime import datetime
 
 class AnalyticsService:
     def __init__(self, db: Session):
@@ -59,4 +60,9 @@ class AnalyticsService:
         """)
         
         result = self.db.execute(query)
-        return result.fetchall() 
+        analytics = result.fetchall()
+        
+        return {
+            "data": analytics,
+            "timestamp": datetime.utcnow().isoformat() + "Z"
+        } 

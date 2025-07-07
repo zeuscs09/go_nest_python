@@ -3,12 +3,15 @@
 # ========================================
 # ไม่ต้องเก็บผลการทดสอบใน Git (ไฟล์ใหญ่ + เปลี่ยนบ่อย)
 k6-tests/stress-test-results/
-k6-tests/**/*.json
-k6-tests/**/*.csv
+k6-tests/stress-test-results/**
+k6-tests/**/*-results.json
+k6-tests/**/*-results.csv
+k6-tests/**/*-report.html
+k6-tests/**/*-report.txt
 k6-tests/**/*.png
-k6-tests/**/*.txt
-# ยกเว้น README.md
-!k6-tests/README.md
+k6-tests/**/*.jpeg
+k6-tests/**/*.jpg
+k6-tests/**/*.gif
 
 # ========================================
 # 🟢 GOLANG

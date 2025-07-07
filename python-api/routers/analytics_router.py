@@ -51,11 +51,13 @@ async def get_user_order_summary(limit: int = 10, offset: int = 0, db: Session =
 @router.get("/analytics")
 async def get_complex_analytics(db: Session = Depends(get_db)):
     analytics_service = AnalyticsService(db)
-    results = analytics_service.get_complex_analytics()
+    result = analytics_service.get_complex_analytics()
     
-    # Convert results to dict format
-    return [
-        {
+    # Since the service now returns a dict with 'data' and 'timestamp',
+    # we need to process the data part and add the timestamp
+    analytics_data = []
+    for row in result["data"]:
+        analytics_data.append({
             "category": row.category,
             "total_orders": row.total_orders,
             "total_quantity": row.total_quantity,
@@ -63,9 +65,12 @@ async def get_complex_analytics(db: Session = Depends(get_db)):
             "avg_price": row.avg_price,
             "unique_customers": row.unique_customers,
             "avg_customer_age": row.avg_customer_age
-        }
-        for row in results
-    ]
+        })
+    
+    return {
+        "data": analytics_data,
+        "timestamp": result["timestamp"]
+    }
 
 @router.get("/health")
 async def health_check():
