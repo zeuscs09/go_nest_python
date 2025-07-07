@@ -1,0 +1,467 @@
+# ========================================
+# 🧪 K6 STRESS TEST RESULTS
+# ========================================
+# ไม่ต้องเก็บผลการทดสอบใน Git (ไฟล์ใหญ่ + เปลี่ยนบ่อย)
+k6-tests/stress-test-results/
+k6-tests/**/*.json
+k6-tests/**/*.csv
+k6-tests/**/*.png
+k6-tests/**/*.txt
+# ยกเว้น README.md
+!k6-tests/README.md
+
+# ========================================
+# 🟢 GOLANG
+# ========================================
+# Build outputs
+**/bin/
+**/pkg/
+**/*.exe
+**/*.exe~
+**/*.dll
+**/*.so
+**/*.dylib
+**/*.test
+**/*.out
+**/vendor/
+
+# Go workspace file
+go.work
+
+# ========================================
+# 🔴 NODE.JS / NESTJS
+# ========================================
+# Dependencies
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/lerna-debug.log*
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+**/out/
+
+# Runtime data
+**/pids/
+**/*.pid
+**/*.seed
+**/*.pid.lock
+
+# Coverage directory used by tools like istanbul
+**/coverage/
+**/.nyc_output/
+
+# Dependency directories
+**/jspm_packages/
+
+# TypeScript cache
+**/*.tsbuildinfo
+
+# Optional npm cache directory
+**/.npm
+
+# Optional eslint cache
+**/.eslintcache
+
+# ========================================
+# 🟡 PYTHON
+# ========================================
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# C extensions
+**/*.so
+
+# Distribution / packaging
+**/.Python
+**/build/
+**/develop-eggs/
+**/dist/
+**/downloads/
+**/eggs/
+**/.eggs/
+**/lib/
+**/lib64/
+**/parts/
+**/sdist/
+**/var/
+**/wheels/
+**/share/python-wheels/
+**/*.egg-info/
+**/.installed.cfg
+**/*.egg
+**/MANIFEST
+
+# PyInstaller
+**/*.manifest
+**/*.spec
+
+# Unit test / coverage reports
+**/htmlcov/
+**/.tox/
+**/.nox/
+**/.coverage
+**/.coverage.*
+**/.cache
+**/nosetests.xml
+**/coverage.xml
+**/*.cover
+**/*.py,cover
+**/.hypothesis/
+**/.pytest_cache/
+**/cover/
+
+# Virtual environments
+**/.env
+**/.venv
+**/env/
+**/venv/
+**/ENV/
+**/env.bak/
+**/venv.bak/
+
+# Jupyter Notebook
+**/.ipynb_checkpoints
+
+# IPython
+**/profile_default/
+**/ipython_config.py
+
+# ========================================
+# 🔵 .NET
+# ========================================
+# Build results
+**/[Dd]ebug/
+**/[Dd]ebugPublic/
+**/[Rr]elease/
+**/[Rr]eleases/
+**/x64/
+**/x86/
+**/[Ww][Ii][Nn]32/
+**/[Aa][Rr][Mm]/
+**/[Aa][Rr][Mm]64/
+**/bld/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Oo]ut/
+**/[Ll]og/
+**/[Ll]ogs/
+
+# Visual Studio 2015/2017 cache/options directory
+**/.vs/
+
+# MSTest test Results
+**/[Tt]est[Rr]esult*/
+**/[Bb]uild[Ll]og.*
+
+# NUnit
+**/*.VisualState.xml
+**/TestResult.xml
+**/nunit-*.xml
+
+# Build Results of an ATL Project
+**/[Dd]ebugPS/
+**/[Rr]eleasePS/
+**/dlldata.c
+
+# Benchmark Results
+**/BenchmarkDotNet.Artifacts/
+
+# .NET Core
+**/project.lock.json
+**/project.fragment.lock.json
+**/artifacts/
+
+# StyleCop
+**/StyleCopReport.xml
+
+# Files built by Visual Studio
+**/*_i.c
+**/*_p.c
+**/*_h.h
+**/*.ilk
+**/*.meta
+**/*.obj
+**/*.iobj
+**/*.pch
+**/*.pdb
+**/*.ipdb
+**/*.pgc
+**/*.pgd
+**/*.rsp
+**/*.sbr
+**/*.tlb
+**/*.tli
+**/*.tlh
+**/*.tmp
+**/*.tmp_proj
+**/*_wpftmp.csproj
+**/*.log
+**/*.tlog
+**/*.vspscc
+**/*.vssscc
+**/.builds
+**/*.pidb
+**/*.svclog
+**/*.scc
+
+# Chutzpah Test files
+**/_Chutzpah*
+
+# Visual C++ cache files
+**/ipch/
+**/*.aps
+**/*.ncb
+**/*.opendb
+**/*.opensdf
+**/*.sdf
+**/*.cachefile
+**/*.VC.db
+**/*.VC.VC.opendb
+
+# Visual Studio profiler
+**/*.psess
+**/*.vsp
+**/*.vspx
+**/*.sap
+
+# Visual Studio Trace Files
+**/*.e2e
+
+# TFS 2012 Local Workspace
+**/$tf/
+
+# Guidance Automation Toolkit
+**/*.gpState
+
+# ReSharper is a .NET coding add-in
+**/_ReSharper*/
+**/*.[Rr]e[Ss]harper
+**/*.DotSettings.user
+
+# TeamCity is a build add-in
+**/_TeamCity*
+
+# DotCover is a Code Coverage Tool
+**/*.dotCover
+
+# AxoCover is a Code Coverage Tool
+**/.axoCover/*
+**/**/coverage*.json
+**/**/coverage*.xml
+**/**/coverage*.info
+
+# Visual Studio code coverage results
+**/*.coverage
+**/*.coveragexml
+
+# NCrunch
+**/_NCrunch_*
+**/*.*crunch*.local.xml
+**/nCrunchTemp_*
+
+# MightyMoose
+**/*.mm.*
+**/AutoTest.Net/
+
+# Web workbench (sass)
+**/.sass-cache/
+
+# Installshield output folder
+**/[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+**/DocProject/buildhelp/
+**/DocProject/Help/*.HxT
+**/DocProject/Help/*.HxC
+**/DocProject/Help/Html2
+**/DocProject/Help/html
+
+# Click-Once directory
+**/publish/
+
+# Publish Web Output
+**/*.[Pp]ublish.xml
+**/*.azurePubxml
+**/*.pubxml
+**/*.publishproj
+
+# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# checkin your Azure Web App publish settings, but sensitive information contained
+# in these files may be leaked, so please exercise caution.
+**/*.PublishSettings
+
+# Microsoft Azure Build Output
+**/csx/
+**/*.build.csdef
+
+# Microsoft Azure Emulator
+**/ecf/
+**/rcf/
+
+# Windows Store app package directories and files
+**/AppPackages/
+**/BundleArtifacts/
+**/Package.StoreAssociation.xml
+**/_pkginfo.txt
+**/*.appx
+**/*.appxbundle
+**/*.appxupload
+
+# Visual Studio cache files
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+**/*.userprefs
+
+# Mono auto generated files
+**/mono_crash.*
+
+# Build results
+**/[Dd]ebug/
+**/[Dd]ebugPublic/
+**/[Rr]elease/
+**/[Rr]eleases/
+
+# ========================================
+# 🗄️ DATABASE
+# ========================================
+# Database files (if any local databases)
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/database/data/
+
+# ========================================
+# 🐳 DOCKER
+# ========================================
+# Docker volumes and data
+**/docker-data/
+**/postgres-data/
+
+# ========================================
+# 🛠️ IDE & EDITOR
+# ========================================
+# Visual Studio Code
+**/.vscode/
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+!**/.vscode/*.code-snippets
+
+# IntelliJ IDEA
+**/.idea/
+**/*.iws
+**/*.iml
+**/*.ipr
+
+# Sublime Text
+**/*.sublime-workspace
+**/*.sublime-project
+
+# Vim
+**/*~
+**/*.swp
+**/*.swo
+**/Session.vim
+
+# Emacs
+**/*~
+**/#*#
+**/.#*
+
+# ========================================
+# 🖥️ OPERATING SYSTEM
+# ========================================
+# macOS
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+**/Icon
+**/.Spotlight-V100
+**/.Trashes
+**/*.dmg
+
+# Windows
+**/Thumbs.db
+**/Thumbs.db:encryptable
+**/ehthumbs.db
+**/ehthumbs_vista.db
+**/*.stackdump
+**/[Dd]esktop.ini
+**/$RECYCLE.BIN/
+**/*.cab
+**/*.msi
+**/*.msix
+**/*.msm
+**/*.msp
+**/*.lnk
+
+# Linux
+**/*~
+**/.*~
+**/.fuse_hidden*
+**/.directory
+**/.Trash-*
+**/.nfs*
+
+# ========================================
+# 📝 LOGS & TEMPORARY FILES
+# ========================================
+# Log files
+**/*.log
+**/logs/
+**/log/
+
+# Runtime data
+**/pids
+**/*.pid
+**/*.seed
+**/*.pid.lock
+
+# Temporary files
+**/tmp/
+**/temp/
+**/*.tmp
+**/*.temp
+
+# ========================================
+# 🔐 ENVIRONMENT & SECRETS
+# ========================================
+# Environment variables
+**/.env
+**/.env.local
+**/.env.production
+**/.env.development
+**/.env.test
+
+# Secrets and API keys
+**/secrets/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+
+# ========================================
+# 📊 PERFORMANCE & PROFILING
+# ========================================
+# Performance test results (additional patterns)
+**/performance-results/
+**/load-test-results/
+**/benchmark-results/
+**/*-results.json
+**/*-results.csv
+**/*-report.html
+
+# Profiling data
+**/*.prof
+**/*.trace
